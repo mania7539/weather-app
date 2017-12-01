@@ -21,9 +21,18 @@ export default class SearchBar extends Component {
 
     }
 
+    onFormSubmit(event) {
+        event.preventDefault();
+        // Add an event handler to the 'form' element itself by using 'onSubmit' and ```event.preventDefault();```
+
+        // TODO: we need to go and fetch weather data
+    }
+
     render() {
         return (
-            <form className="input-group">
+            <form
+                onSubmit={this.onFormSubmit}
+                className="input-group" >
                 <input
                     placeholder="Get a five-day forecast in your favorite cities"
                     className="form-control"
