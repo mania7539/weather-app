@@ -13,8 +13,17 @@ export function fetchWeather(city) {
     // use 'us' for country code as default country
     const request = axios.get(url);
 
+    console.log("Request: ", request);
+
     return ({
         type: FETCH_WEATHER,
         payload: request
     });
 }
+//  ``` Get message: 
+//  bundle.js:22739 Request:  Promise {[[PromiseStatus]]: "pending", [[PromiseValue]]: undefined}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: Object
+//  bundle.js:24306 Action received  {type: "FETCH_WEATHER", payload: {…}}
+//  ```
+//  it shows that the action creates first which gets pending, 
+//  and then it resolves, so passes to reducer later.
+//  redux-promise is a middleware, so this is what it does - pending until it resolves.
