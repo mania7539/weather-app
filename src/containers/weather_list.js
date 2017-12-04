@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class WeatherList extends Component {
 
-    renderWeather(cityData) {
+    renderWeather(cityData) { // cityData is for each array element passed to array.map function
         const name = cityData.city.name;
         return (
             <tr key={name}>
@@ -52,6 +52,8 @@ function mapStateToProps({ weather }) {
 //         weather: state.weather
 //     });
 // }
-
+//
+// the value of state.weather is fetched from action FETCH_WEATHER, which is defined in 
+// ./reducers/reducer_weather.js and ./actions/index.js
 
 export default connect(mapStateToProps)(WeatherList);
