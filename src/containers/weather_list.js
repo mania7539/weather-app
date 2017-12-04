@@ -9,20 +9,26 @@ class WeatherList extends Component {
     }
 
     renderWeather(cityData) { // cityData is for each array element passed to array.map function
-        const name = cityData.city.name;
+        const cityName = cityData.city.name;
         const temperatures = cityData.list.map(weather => weather.main.temp);
         /** the above code is equal to 
          * ```cityData.list.map(weather => {return weather.main.temp})``` 
          **/
+        /** 
+        * you can also set the value to Celsius by -273 with lodash
+        * ```const temperatures = _.map(cityData.list.map(weather => weather.main.temp), (temp) => temp - 273);```
+        **/
+        const pressures = cityData.list.map(weather => weather.main.pressure);
+        const humidities = cityData.list.map(weather => weather.main.humidity);
 
         console.log(temperatures);
 
         return (
-            <tr key={name}>
-                <td>{name}</td>
-                <td>
-                    <Chart data={temperatures} color="orange" />
-                </td>
+            <tr key={cityName}>
+                <td>{cityName}</td>
+                <td><Chart data={temperatures} color="orange" units="K" /></td>
+                <td><Chart data={pressures} color="green" units="hPa" /></td>
+                <td><Chart data={humidities} color="black" units="%" /></td>
             </tr>
         );
         // in ```height={120} width={180}```, the numbers mean pixels of chart
@@ -39,9 +45,9 @@ class WeatherList extends Component {
                 <thead>
                     <tr>
                         <th>City</th>
-                        <th>Temperature</th>
-                        <th>Pressure</th>
-                        <th>Humidity</th>
+                        <th>Temperature (K)</th>
+                        <th>Pressure (hPa)</th>
+                        <th>Humidity (%)</th>
                     </tr>
                 </thead>
                 <tbody>
