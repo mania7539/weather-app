@@ -10,7 +10,7 @@ function average(data) {
 export default (props) => {
     return (
         <div>
-            <Sparklines svgHeight={120} svgWidth={180} data={props.data}>
+            <Sparklines height={120} width={180} data={props.data}>
                 <SparklinesLine color={props.color} />
                 <SparklinesReferenceLine type="avg" />
             </Sparklines>
@@ -23,7 +23,8 @@ export default (props) => {
     // the value of 'color' map from "red" to 'props.color'.
     //
     // instead of using height and width, using svgHeight, svgWidth, 
-    //  which won't cause resize and normalization issue.
+    //  which won't cause resize and normalization issue... OR
+    //  we can use css ```svg { height: 150; }``` to solve it too. (better looking solution)
 }
 /** 
  * Construct the component into a functional component rather then a class-based component,
