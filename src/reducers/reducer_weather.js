@@ -5,6 +5,11 @@ export default function (state = [], action) {
 
     switch (action.type) {
         case FETCH_WEATHER:
+            if (!action.payload.data) {
+                return state;
+                // handle 404 and situation when action.payload.data is 'undefined'
+            }
+
             return [action.payload.data, ...state];
             // `return state.concat([action.payload.data]);` is equal to the above ES6 code
             // array.concat doesn't change the existing array, it creates a new array that contains
