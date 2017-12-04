@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Sparklines, SparklinesLine } from "react-sparklines";
+import Chart from "../components/chart";
 
 class WeatherList extends Component {
     constructor(props) {
@@ -21,15 +21,16 @@ class WeatherList extends Component {
             <tr key={name}>
                 <td>{name}</td>
                 <td>
-                    <Sparklines height={120} width={180} data={temperatures}>
-                        <SparklinesLine color="red" />
-                    </Sparklines>
+                    <Chart data={temperatures} color="orange" />
                 </td>
             </tr>
         );
         // in ```height={120} width={180}```, the numbers mean pixels of chart
-		// property 'data' is an array data source from us
-		// by using 'SparklineLine' we can set the line chart color
+		//  property 'data' is an array data source from us
+        //  by using 'SparklineLine' we can set the line chart color
+        //
+        // the 'data' and 'color' properties will be inside a property called 'props'
+        //  when you want to use them in 'Chart' component
     }
 
     render() {
