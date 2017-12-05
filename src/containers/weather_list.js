@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Chart from "../components/chart";
+import GoogleMap from "../components/google_map";
 
 class WeatherList extends Component {
     constructor(props) {
@@ -21,18 +22,26 @@ class WeatherList extends Component {
         const pressures = cityData.list.map(weather => weather.main.pressure);
         const humidities = cityData.list.map(weather => weather.main.humidity);
 
-        console.log(temperatures);
+        const { lat, lon } = cityData.city.coord;
+        /** 
+        * the above ES6 code is the same as the below codes:
+        * const lat = cityData.city.coord.lat;
+        * const lon = cityData.city.coord.lon;
+        * which get the properties from the json and assign them to each const of the same name
+        */
+
+        console.log(temperatures, lat, lon);
 
         return (
             <tr key={cityName}>
-                <td>{cityName}</td>
+                <td><GoogleMap lat={lat} lng={lon} /></td>
                 <td><Chart data={temperatures} color="orange" units="K" /></td>
                 <td><Chart data={pressures} color="green" units="hPa" /></td>
                 <td><Chart data={humidities} color="black" units="%" /></td>
             </tr>
         );
         // in ```height={120} width={180}```, the numbers mean pixels of chart
-		//  property 'data' is an array data source from us
+        //  property 'data' is an array data source from us
         //  by using 'SparklineLine' we can set the line chart color
         //
         // the 'data' and 'color' properties will be inside a property called 'props'

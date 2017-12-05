@@ -15,6 +15,7 @@ export default (props) => {
                 <SparklinesReferenceLine type="avg" />
             </Sparklines>
             <div>{average(props.data)} {props.units}</div>
+            <div>{props.fetchWeather}</div>
         </div>
     );
     // the value of 'data' will map from 'temperatures' to 'props.data', 
