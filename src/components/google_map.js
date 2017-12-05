@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { GoogleMapLoader, googleMapElement } from "react-google-maps";
 
 class GoogleMap extends Component {
     componentDidMount() {
@@ -11,7 +12,7 @@ class GoogleMap extends Component {
         });
     }
 
-    render () {
+    render() {
         return (
             <div ref="map" />
         );
@@ -21,6 +22,16 @@ class GoogleMap extends Component {
         //  so after this component has been rendered to the screen,
         //  I can get a direct reference to the 'div' that was created right here by referreing 
         //  to 'this.refs.map' anywhere else in this component.
+
+        // for module "react-google-maps", we can use the below code for rendering:
+        // return (
+        //     <GoogleMapLoader
+        //         containerElement={<div style={{ height: '100%' }} />}
+        //         googleMapElement={
+        //             <GoogleMap default={12} defaultCenter={{ lat: props.lat, lng: props.lon }} />
+        //         }
+        //     />
+        // );
     }
 }
 
